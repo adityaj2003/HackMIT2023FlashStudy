@@ -8,7 +8,7 @@ const createChatLi = (message, className) => {
     // Create a chat <li> element with passed message and className
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", `${className}`);
-    let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
+    let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">ChatGPT</span><p></p>`;
     chatLi.innerHTML = chatContent;
     chatLi.querySelector("p").textContent = message;
     return chatLi; // return chat <li> element
@@ -40,6 +40,27 @@ const handleChat = async () => {
     const summary = await getSummary(userMessage);
     
     simpleResponse(incomingChatLi, summary);
+    try {
+        const response = await fetch('/export', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            question: userMessage,
+            summaryResponse: summary  // Replace summaryResponse with the name used in your server logic if different
+          }),
+        });
+    
+        const data = await response.json();
+        if (response.ok) {
+          console.log("Server Response:", data.message);
+        } else {
+          console.log("Error:", data);
+        }
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
   };
 
   const getSummary = async (transcript) => {

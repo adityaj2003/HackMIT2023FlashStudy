@@ -2,72 +2,143 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-  }
-  
-  .dropdown-menu {
+}
+
+.dropdown-container {
+    z-index: 0;
     width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .main-content {
+    margin-top: 130px;
+    margin-bottom: 5px;
+}
+
+.main-content {
     display: flex;
-    justify-content: space-between;
-  }
-  
-  /* PDF Viewer Styles */
-  .pdf-viewer {
+}
+
+.pdf-viewer {
     flex: 3;
     height: 400px;
-    border: 1px solid #ccc;
     margin-left: 5px;
     margin-right: 5px;
-  }
-  
-  /* Chatbox Styles */
-  .chatbox {
-    flex: 1;
+    margin-top:26px;
+    position: relative; /* New, to position the upload form */
+}
+
+/* Upload Form styles */
+.upload-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2; /* To position it above the embed element */
+}
+
+.upload-form input[type="file"] {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.upload-form button {
+    font-size: 16px;
+    padding: 12px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Chatbox Styles */
+.chatbox {
     height: 400px;
+    min-width: 350px;
+    max-width: 350px;
     border: 1px solid #ccc;
     background-color: white;
     display: flex;
+    margin-top: 25px;
     flex-direction: column;
-  }
-  
-  .chatbox .chatbox-header {
+}
+
+.chatbox .chatbox-header {
     padding: 15px;
     border-bottom: 1px solid #ccc;
     background-color: #f1f1f1;
     display: flex;
     justify-content: space-between;
-  }
-  
-  .chatbox .chats {
-    flex-grow: 1;
+}
+
+.chatbox .chats {
+    height: 250px;
     padding: 15px;
     overflow-y: auto;
-  }
-  
-  .chatbox .chat-input {
+}
+
+.chatbox .chat-input {
     padding: 15px;
     border-top: 1px solid #ccc;
-  }
-  
-  .chatbox .chat-input textarea {
+}
+
+.chatbox .chat-input textarea {
     width: 100%;
     padding: 5px;
     border: none;
     resize: none;
     overflow: hidden;
-  }
-  
-  .chatbox .chat-input span {
+}
+
+.chatbox .chat-input span {
     cursor: pointer;
-  }
-  .chats .incoming p {
+}
+
+.chats .incoming p {
     background-color: #e6e6e6;
     color: black;
 }
+
 .chats .outgoing p {
     background-color: #2196F3;
     color: white;
+}
+
+/* Search Styles */
+.search {
+    height: 400px;
+    min-width: 300px;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search input[type="text"] {
+    padding: 5px 10px;
+    border: none;
+}
+
+.search button {
+    margin-left: 5px;
+    padding: 6px 12px;
+}
+
+.results {
+    max-height: 385px;
+    overflow-y: auto;
+    background-color: white;
+}
+#___gcse_1 {
+    max-width: 26%;
+    float:right;
 }

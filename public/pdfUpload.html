@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PDF Upload and View</title>
+    <link rel="stylesheet" href="style.css">
+  <title>Study Flash</title>
   <style>
     .container {
       display: flex;
@@ -30,28 +31,25 @@
 }
   </style>
   <meta charset="utf-8">
-  <title>Chatbot in JavaScript | CodingNepal</title>
-  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts Link For Icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
   <link rel="stylesheet" href="chatbot.css">
   <script src="script.js" defer></script>
   <script src="chatbot.js" defer></script>
+  <script src="js.js" defer></script>
 </head>
 <body>
-    <form id="upload-form" enctype="multipart/form-data">
-        <input type="file" name="pdf">
-        <button type="submit">Upload</button>
-    </form>
+    <div class="banner">
+        <h1>Study-Flash</h1>
+    </div>
+
+    
     <div class="wrapper">
         <!-- Dropdown Menu -->
         <div class="dropdown-container">
             <select id="summaryType">
-                <option value="youtube">YouTube Videos</option>
-                <option value="google">Google Links</option>
                 <option value="chatgpt">ChatGPT Summarizer</option>
+                <option value="youtube">YouTube Videos</option>
             </select>
         </div>
 
@@ -59,11 +57,15 @@
         <div class="main-content">
             <!-- PDF Viewer -->
             <div class="pdf-viewer">
+                <form id="upload-form" class="upload-form" enctype="multipart/form-data">
+                    <input type="file" name="pdf" id="pdf-file">
+                    <button id="upload-button" type="submit">Upload PDF</button>
+                </form>
                 <embed id="pdf-viewer" type="application/pdf">
             </div>
 
             <!-- Chatbot -->
-            <div class="chatbox">
+            <div id="chatbot-container" class="chatbox">
                 <div class="chatbox-header">
                     <span>ChatGPT</span>
                 </div>
@@ -73,9 +75,47 @@
                     <span id="send-btn">Send</span>
                 </div>
             </div>
+            <div id="search-container" class="search">
+                <div class="search-bar">
+                    <input type="text" id="search-query" placeholder="Search">
+                    <button onclick="search()">Search</button>
+                </div>
+                <div class="gcse-searchresults-only"></div>
+                <div id="results" class="results"></div>
+            </div>
+            
         </div>
     </div>
+    <div class="bcs-search">
+    <script async src="https://cse.google.com/cse.js?cx=45d7e6f90053748d9">
+    </script>
+    </div>
+    <div class="gcse-search"></div>
     <script>
+        const uploadButton = document.getElementById('upload-button');
+  const pdfUploadForm = document.getElementById('upload-form');
+  
+  uploadButton.addEventListener('click', function() {
+    pdfUploadForm.style.display = 'none'; // Hide the form
+  });
+        document.addEventListener('DOMContentLoaded', function() {
+    const summaryType = document.getElementById('summaryType');
+    const chatbotContainer = document.getElementById('chatbot-container');
+    const searchContainer = document.getElementById('search-container');
+
+    // Hide search by default
+    searchContainer.style.display = 'none';
+
+    summaryType.addEventListener('change', function() {
+        if (this.value === 'chatgpt') {
+            chatbotContainer.style.display = 'block';
+            searchContainer.style.display = 'none';
+        } else {
+            chatbotContainer.style.display = 'none';
+            searchContainer.style.display = 'block';
+        }
+    });
+});
         window.watsonAssistantChatOptions = {
           integrationID: "14e4a120-70c3-414b-92a6-61468a8d2a04", // The ID of this integration.
           region: "us-east", // The region your integration is hosted in.
