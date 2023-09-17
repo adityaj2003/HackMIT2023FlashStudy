@@ -92,7 +92,6 @@
     </div>
     <div class="gcse-search"></div>
     <div id="flashcard-container">
-        <!-- Flashcards will go here -->
     </div>
     <button id="createNoteButton">Create Note</button>
     <div class="popup" id="notePopup">
@@ -113,6 +112,10 @@ document.getElementById('closePopup').addEventListener('click', function() {
 
 document.getElementById('saveNoteButton').addEventListener('click', function() {
     let noteContent = document.getElementById('noteContent').value;
+    // Use noteContent to save the note (send it to Notion API)
+    // Remember to handle saving and authentication here.
+    document.getElementById('notePopup').style.display = 'none';
+});
         const uploadButton = document.getElementById('upload-button');
   const pdfUploadForm = document.getElementById('upload-form');
   
@@ -137,17 +140,6 @@ document.getElementById('saveNoteButton').addEventListener('click', function() {
         }
     });
 });
-        window.watsonAssistantChatOptions = {
-          integrationID: "14e4a120-70c3-414b-92a6-61468a8d2a04", // The ID of this integration.
-          region: "us-east", // The region your integration is hosted in.
-          serviceInstanceID: "b32f367d-fc27-4743-9f6a-61af2bd5596b", // The ID of your service instance.
-          onLoad: function(instance) { instance.render(); }
-        };
-        setTimeout(function(){
-          const t=document.createElement('script');
-          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
-          document.head.appendChild(t);
-        });
     </script>
 </body>
 </html>

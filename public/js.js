@@ -10,8 +10,6 @@ function search() {
     resultsContainer.innerHTML = '';
 
     if (currentSearchEngine === 'google') {
-        // Implement Google Search API request
-        // Display Google search results on the website
             const apiKey = 'AIzaSyD3vkuINJKaWllK1eRXV6fA-Pc1wGrU6Jo'; // Replace with your actual API key
             const cx = 'https://cse.google.com/cse.js?cx=21c23e63f676a4a93'; // Replace with your actual custom search engine ID
             const url = `https://www.googleapis.com/customsearch/v1?q=${query}&key=${apiKey}&cx=${cx}`;
@@ -64,8 +62,4 @@ function search() {
                 .catch(error => console.error('Error:', error));
         }
         
-     else if (currentSearchEngine === 'chatgpt') {
-        // Implement ChatGPT API request
-        // Display ChatGPT search results on the website
-    }
 }
