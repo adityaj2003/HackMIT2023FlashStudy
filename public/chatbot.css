@@ -1,0 +1,73 @@
+/* Overall Layout */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-menu {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* PDF Viewer Styles */
+  .pdf-viewer {
+    flex: 3;
+    height: 400px;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  /* Chatbox Styles */
+  .chatbox {
+    flex: 1;
+    height: 400px;
+    border: 1px solid #ccc;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chatbox .chatbox-header {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .chatbox .chats {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+  }
+  
+  .chatbox .chat-input {
+    padding: 15px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .chatbox .chat-input textarea {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    resize: none;
+    overflow: hidden;
+  }
+  
+  .chatbox .chat-input span {
+    cursor: pointer;
+  }
+  .chats .incoming p {
+    background-color: #e6e6e6;
+    color: black;
+}
+.chats .outgoing p {
+    background-color: #2196F3;
+    color: white;
+}

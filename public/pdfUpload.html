@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Upload and View</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+    }
+    .embed-container {
+      width: 60%;
+      text-align: center;
+    }
+    embed {
+      width: 100%;
+      height: 600px;
+    }
+    .dropdown-container {
+      position: absolute;
+      top: 0;
+      left: 63%;
+      z-index: 1;
+    }
+    .chatbot-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+  </style>
+  <meta charset="utf-8">
+  <title>Chatbot in JavaScript | CodingNepal</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts Link For Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <link rel="stylesheet" href="chatbot.css">
+  <script src="script.js" defer></script>
+  <script src="chatbot.js" defer></script>
+</head>
+<body>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="pdf">
+        <button type="submit">Upload</button>
+    </form>
+    <div class="wrapper">
+        <!-- Dropdown Menu -->
+        <div class="dropdown-container">
+            <select id="summaryType">
+                <option value="youtube">YouTube Videos</option>
+                <option value="google">Google Links</option>
+                <option value="chatgpt">ChatGPT Summarizer</option>
+            </select>
+        </div>
+
+        <!-- Main Content: PDF Viewer and Chatbot -->
+        <div class="main-content">
+            <!-- PDF Viewer -->
+            <div class="pdf-viewer">
+                <embed id="pdf-viewer" type="application/pdf">
+            </div>
+
+            <!-- Chatbot -->
+            <div class="chatbox">
+                <div class="chatbox-header">
+                    <span>ChatGPT</span>
+                </div>
+                <div class="chats" id="chats"></div>
+                <div class="chat-input">
+                    <textarea id="user-input" placeholder="Type a message..." rows="1"></textarea>
+                    <span id="send-btn">Send</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "14e4a120-70c3-414b-92a6-61468a8d2a04", // The ID of this integration.
+          region: "us-east", // The region your integration is hosted in.
+          serviceInstanceID: "b32f367d-fc27-4743-9f6a-61af2bd5596b", // The ID of your service instance.
+          onLoad: function(instance) { instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+    </script>
+</body>
+</html>
