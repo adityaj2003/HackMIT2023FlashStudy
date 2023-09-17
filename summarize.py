@@ -5,7 +5,7 @@ import os
 def generate_summary(transcript):
     system_prompt = "Answer the question based on the pdf text given to u earlier. Keep it concise, crisp and something that even college freshman could understand. "
     # Initialize OpenAI API
-    openai.api_key = "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"
+    openai.api_key = ''
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages= [{"role":"user", "content": system_prompt + transcript}]

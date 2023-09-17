@@ -96,6 +96,22 @@ app.post("/get-summary", (req, res) => {
     });
   });
 
+app.post("/get-qa", (req, res) => {
+    const transcript = "This is the pdf text - "+pdfText+". Generate exactly 5 question and answer pairs for the pdf. Each q&a pair must be separated by newline character. And every question should end with a question mark. Question and answer should be on the same line (no newline in between) and there should be no characters specifying which is question and which is answer. They should be on same line and just separated by ?.";
+    exec(`python summarize.py "${transcript}"`, (error, stdout, stderr) => {
+      if (error) {
+        console.log(`Error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+      }
+      console.log(stdout);
+      res.json({ summary: stdout });
+    });
+  });
+
 
   async function addHeadingToNotion(notion, title) {
     (async () => {

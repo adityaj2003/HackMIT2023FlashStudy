@@ -91,7 +91,28 @@
     </script>
     </div>
     <div class="gcse-search"></div>
+    <div id="flashcard-container">
+        <!-- Flashcards will go here -->
+    </div>
+    <button id="createNoteButton">Create Note</button>
+    <div class="popup" id="notePopup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <textarea id="noteContent" rows="5" cols="40"></textarea>
+            <button id="saveNoteButton">Save Note</button>
+        </div>
+    </div>
     <script>
+        document.getElementById('createNoteButton').addEventListener('click', function() {
+    document.getElementById('notePopup').style.display = 'flex';
+});
+
+document.getElementById('closePopup').addEventListener('click', function() {
+    document.getElementById('notePopup').style.display = 'none';
+});
+
+document.getElementById('saveNoteButton').addEventListener('click', function() {
+    let noteContent = document.getElementById('noteContent').value;
         const uploadButton = document.getElementById('upload-button');
   const pdfUploadForm = document.getElementById('upload-form');
   

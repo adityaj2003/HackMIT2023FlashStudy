@@ -71,7 +71,7 @@ const handleChat = async () => {
       },
       body: JSON.stringify({ transcript })
     });
-  
+    
     const data = await response.json();
     return data.summary;
   };
@@ -90,5 +90,5 @@ chatInput.addEventListener("keydown", (e) => {
         handleChat();
     }
 });
-
+  
 sendChatBtn.addEventListener("click", handleChat);
